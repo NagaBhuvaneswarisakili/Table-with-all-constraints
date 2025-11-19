@@ -1,0 +1,25 @@
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,           
+    first_name VARCHAR(50) NOT NULL,      
+    last_name VARCHAR(50),                
+    email VARCHAR(100) UNIQUE,            
+    age INT CHECK (age >= 18),            
+    grade VARCHAR(2) DEFAULT 'A',         
+    course_id INT,                        
+
+    CONSTRAINT fk_course
+        FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+output:
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| student_id  | int          | NO   | PRI | NULL    |       |
+| first_name  | varchar(50)  | NO   |     | NULL    |       |
+| last_name   | varchar(50)  | YES  |     | NULL    |       |
+| email       | varchar(100) | YES  | UNI | NULL    |       |
+| age         | int          | YES  |     | NULL    |       |
+| grade       | varchar(2)   | YES  |     | A       |       |
+| course_id   | int          | YES  | MUL | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
